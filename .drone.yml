@@ -6,4 +6,5 @@ steps:
 - name: build
   image: alpine:latest
   commands:
-  - echo "Building project"
+  - echo "Starting to build the project"
+  - echo "Building project..."
