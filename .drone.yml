@@ -3,6 +3,11 @@ type: docker
 name: default
 
 steps:
+- name: init
+  image: alpine:latest
+  commands:
+  - echo "Initializing..."
+  - ls -l
 - name: build
   image: alpine:latest
   commands:
