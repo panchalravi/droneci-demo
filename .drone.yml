@@ -3,4 +3,4 @@ load: plugin.jsonnet
 data:
   stepName: build
   image: alpine:latest
-  commands: echo "Building project using template..."
+  commands: echo "1. Cleaning project ...", echo "2. Building project..."
