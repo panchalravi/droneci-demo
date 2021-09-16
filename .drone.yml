@@ -7,14 +7,14 @@ steps:
   image: alpine:latest
   commands:
   - echo "Initializing..."
-  - echo "$date"
+  - date
   - sleep 5
   - ls -la
 - name: build
   image: alpine:latest
   commands:
   - echo "Starting to build the sample project"
-  - echo "$date"
+  - date
   - echo "Building project..."
   - sleep 5
   - echo "Done building the project"
@@ -22,7 +22,7 @@ steps:
   image: alpine:latest
   commands:
     - echo "Deploying the project"
-    - echo "$now"
+    - date
     - sleep 3
     - echo "Done deployment"
   depends_on:
