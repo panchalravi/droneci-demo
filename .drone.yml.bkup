@@ -1,15 +1,6 @@
-kind: pipeline
-type: docker
-name: default
-
-steps:
-- name: init
+kind: template
+load: plugin.jsonnet
+data:
+  stepName: build
   image: alpine:latest
-  commands:
-  - echo "Initializing..."
-  - ls -l
-- name: build
-  image: alpine:latest
-  commands:
-  - echo "Starting to build the sample project"
-  - echo "Building project..."
+  commands: echo "1. Cleaning project ...", echo "2. Building project..."
