@@ -28,3 +28,16 @@ steps:
   depends_on:
     - init
     - build
+
+---
+kind: pipeline
+type: docker
+name: qa
+steps:
+- name: static-scan
+  image: alpine:latest
+  commands:
+  - echo "Starting static code analysis..."
+  - date
+  - sleep 2
+  - ls -la
