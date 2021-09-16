@@ -7,12 +7,21 @@ steps:
   image: alpine:latest
   commands:
   - echo "Initializing..."
-  - sleep 3
-  - ls -l
+  - sleep 5
+  - ls -la
 - name: build
   image: alpine:latest
   commands:
   - echo "Starting to build the sample project"
   - echo "Building project..."
-  - sleep 2
-  - echo "Done"
+  - sleep 5
+  - echo "Done building the project"
+- name: deploy
+  image: alpine:latest
+  commands:
+    - echo "Deploying the project"
+    - sleep 3
+    - echo "Done deployment"
+  depends_on:
+    - init
+    - build
