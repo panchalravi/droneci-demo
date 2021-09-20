@@ -25,6 +25,9 @@ steps:
     - date
     - sleep 3
     - echo "Done feature1"
+  when:
+    branch:
+    - feature/*
 - name: deploy
   image: alpine:latest
   commands:
