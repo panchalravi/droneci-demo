@@ -18,6 +18,13 @@ steps:
   - echo "Building project..."
   - sleep 5
   - echo "Done building the project"
+- name: feature-only
+  image: alpine:latest
+  commands:
+    - echo "Step for feature1 only"
+    - date
+    - sleep 3
+    - echo "Done feature1"
 - name: deploy
   image: alpine:latest
   commands:
