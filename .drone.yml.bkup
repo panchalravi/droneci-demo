@@ -1,6 +1,53 @@
-kind: template
-load: plugin.jsonnet
-data:
-  stepName: build
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: init
   image: alpine:latest
-  commands: echo "1. Cleaning project ...", echo "2. Building project..."
+  commands:
+  - echo "Initializing..."
+  - date
+  - sleep 5
+  - ls -la
+- name: build
+  image: alpine:latest
+  commands:
+  - echo "Starting to build the sample project"
+  - date
+  - echo "Building project..."
+  - sleep 5
+  - echo "Done building the project"
+- name: feature-only
+  image: alpine:latest
+  commands:
+    - echo "Step for feature1 only"
+    - date
+    - sleep 3
+    - echo "Done feature1"
+  when:
+    branch:
+    - feature/*
+- name: deploy
+  image: alpine:latest
+  commands:
+    - echo "Deploying the project"
+    - date
+    - sleep 3
+    - echo "Done deployment"
+  depends_on:
+    - init
+    - build
+
+---
+kind: pipeline
+type: docker
+name: qa
+steps:
+- name: static-scan
+  image: alpine:latest
+  commands:
+  - echo "Starting static code analysis..."
+  - date
+  - sleep 2
+  - ls -la
