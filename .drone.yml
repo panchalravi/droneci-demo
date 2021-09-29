@@ -3,4 +3,6 @@ load: plugin.star
 data:
   stepName: build
   image: alpine:latest
-  commands: echo "Building..."
+  commands: 
+    - echo "Downloading..."
+    - echo "Building..."
