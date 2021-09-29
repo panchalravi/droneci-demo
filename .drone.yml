@@ -4,5 +4,6 @@ data:
   stepName: build
   image: alpine:latest
   commands: 
+    - date
     - echo "Downloading..."
     - echo "Building..."
