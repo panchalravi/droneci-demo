@@ -5,19 +5,20 @@ def main(ctx):
       "name": "build",
       "steps": [
         {
-          "name": "check PR title",
+          "name": "check-PR",
           "image": "alpine:latest",
-          "commands": ["echo 'Checking PR title'"]
+          "commands": ["date", "echo 'Checking PR title'"]
         },
         {
-          "name": "check commit message",
+          "name": "check-commit",
           "image": "alpine:latest",
-          "commands": ["echo 'Checking commit message: " + ctx.build.message + "'"]
+          "commands": ["date", "echo 'Checking commit message: " + ctx.build.message + "'"]
         },
         {
           "name": ctx.input.stepName,
           "image": ctx.input.image,
-          "commands": ctx.input.commands
+          "commands": ctx.input.commands,
+          "depends_on": ["check-PR", "check-commit"]
         }
       ]
     },
@@ -28,7 +29,7 @@ def main(ctx):
         {
           "name": "some-step",
           "image": "alpine:latest",
-          "commands": ["echo 'Running step in parallel pipeline...'"]
+          "commands": ["date", "echo 'Running step in parallel pipeline...'"]
         }
       ]
     }
@@ -37,6 +38,6 @@ def main(ctx):
     pipelines[0].get("steps").append({
       "name": "last-step",
       "image": "alpine:latest",
-      "commands": ["echo 'Running last step ...'"]
+      "commands": ["date", "echo 'Running last step ...'"]
     })
   return pipelines
