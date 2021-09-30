@@ -1,7 +1,7 @@
 kind: template
 load: plugin.star
 data:
-  lastStep: False
+  lastStep: True
   stepName: build
   image: alpine:latest
   commands: 
