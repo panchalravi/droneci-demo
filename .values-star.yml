@@ -1,6 +1,0 @@
-kind: template
-load: plugin.starlark
-data:
-  stepName: build
-  image: alpine:latest
-  commands: echo "Building..."
